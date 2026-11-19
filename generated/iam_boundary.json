@@ -1,0 +1,120 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowedSurface",
+      "Effect": "Allow",
+      "Action": [
+        "ce:GetCostAndUsage",
+        "cloudwatch:DescribeAlarms",
+        "cloudwatch:GetMetricData",
+        "ec2:CreateTags",
+        "ec2:DescribeInstances",
+        "ec2:ModifyInstanceAttribute",
+        "ec2:StartInstances",
+        "ec2:StopInstances",
+        "ecs:DescribeServices",
+        "ecs:ListServices",
+        "ecs:UpdateService",
+        "logs:FilterLogEvents",
+        "rds:CreateDBSnapshot",
+        "rds:DescribeDBInstances",
+        "rds:DescribeDBSnapshots",
+        "s3:GetObject",
+        "s3:ListBucket"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "PlatformSurface",
+      "Effect": "Allow",
+      "Action": [
+        "dynamodb:GetItem",
+        "dynamodb:PutItem",
+        "dynamodb:UpdateItem",
+        "dynamodb:Query",
+        "dynamodb:Scan",
+        "sns:Publish",
+        "bedrock:ApplyGuardrail",
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+      ],
+      "Resource": [
+        "arn:aws:dynamodb:*:*:table/break-me-*",
+        "arn:aws:sns:*:*:break-me-*",
+        "arn:aws:bedrock:*:*:guardrail/*",
+        "arn:aws:logs:*:*:log-group:/aws/lambda/break-me-*",
+        "arn:aws:logs:*:*:log-group:/aws/lambda/break-me-*:*"
+      ]
+    },
+    {
+      "Sid": "LambdaEnvDecryptOnly",
+      "Effect": "Allow",
+      "Action": "kms:Decrypt",
+      "Resource": "*",
+      "Condition": {
+        "StringLike": {
+          "kms:EncryptionContext:aws:lambda:FunctionArn": "arn:aws:lambda:*:*:function:break-me-*"
+        }
+      }
+    },
+    {
+      "Sid": "NoOtherDecrypt",
+      "Effect": "Deny",
+      "Action": "kms:Decrypt",
+      "Resource": "*",
+      "Condition": {
+        "StringNotLike": {
+          "kms:EncryptionContext:aws:lambda:FunctionArn": "arn:aws:lambda:*:*:function:break-me-*"
+        }
+      }
+    },
+    {
+      "Sid": "HardDenyCompiledFromRules",
+      "Effect": "Deny",
+      "Action": [
+        "bedrock:UpdateGuardrail",
+        "cloudtrail:DeleteTrail",
+        "cloudtrail:StopLogging",
+        "ec2:AuthorizeSecurityGroupIngress",
+        "ec2:CopySnapshot",
+        "ec2:DeleteSnapshot",
+        "ec2:DeleteVolume",
+        "ec2:ModifySnapshotAttribute",
+        "ec2:RevokeSecurityGroupIngress",
+        "ec2:TerminateInstances",
+        "iam:AttachRolePolicy",
+        "iam:CreateAccessKey",
+        "iam:CreateUser",
+        "iam:DeleteRolePermissionsBoundary",
+        "iam:PutRolePolicy",
+        "iam:UpdateAssumeRolePolicy",
+        "logs:DeleteLogGroup",
+        "rds:DeleteDBInstance",
+        "rds:DeleteDBSnapshot",
+        "rds:ModifyDBInstance",
+        "rds:ModifyDBSnapshotAttribute",
+        "s3:DeleteBucket",
+        "s3:DeleteObject",
+        "s3:PutBucketPolicy",
+        "s3:PutObjectAcl",
+        "secretsmanager:GetSecretValue",
+        "ssm:GetParameter",
+        "verifiedpermissions:PutPolicy"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "ProtectTheBoundaryItself",
+      "Effect": "Deny",
+      "Action": [
+        "iam:DeleteRolePermissionsBoundary",
+        "iam:PutRolePermissionsBoundary",
+        "iam:CreatePolicyVersion",
+        "iam:SetDefaultPolicyVersion"
+      ],
+      "Resource": "*"
+    }
+  ]
+}

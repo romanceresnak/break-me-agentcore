@@ -1,0 +1,60 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "NoDataDestructionByAgentRoles",
+      "Effect": "Deny",
+      "Action": [
+        "cloudtrail:DeleteTrail",
+        "cloudtrail:StopLogging",
+        "ec2:CopySnapshot",
+        "ec2:DeleteSnapshot",
+        "ec2:DeleteVolume",
+        "ec2:ModifySnapshotAttribute",
+        "ec2:TerminateInstances",
+        "logs:DeleteLogGroup",
+        "rds:DeleteDBInstance",
+        "rds:DeleteDBSnapshot",
+        "rds:ModifyDBInstance",
+        "rds:ModifyDBSnapshotAttribute",
+        "s3:DeleteBucket",
+        "s3:DeleteObject",
+        "s3:PutBucketPolicy",
+        "s3:PutObjectAcl"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "ArnLike": {
+          "aws:PrincipalArn": "arn:aws:iam::*:role/break-me-*"
+        }
+      }
+    },
+    {
+      "Sid": "NoAuditTampering",
+      "Effect": "Deny",
+      "Action": [
+        "cloudtrail:StopLogging",
+        "cloudtrail:DeleteTrail",
+        "cloudtrail:UpdateTrail"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "NoExpensiveInstanceFamilies",
+      "Effect": "Deny",
+      "Action": "ec2:RunInstances",
+      "Resource": "arn:aws:ec2:*:*:instance/*",
+      "Condition": {
+        "StringLike": {
+          "ec2:InstanceType": [
+            "p*",
+            "g*",
+            "x*",
+            "u-*",
+            "*.metal*"
+          ]
+        }
+      }
+    }
+  ]
+}

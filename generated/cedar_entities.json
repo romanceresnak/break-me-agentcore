@@ -1,0 +1,669 @@
+[
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "ReadOnly"
+    },
+    "attrs": {},
+    "parents": []
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "ec2:DescribeInstances"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "ReadOnly"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "ecs:DescribeServices"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "ReadOnly"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "ecs:ListServices"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "ReadOnly"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "rds:DescribeDBInstances"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "ReadOnly"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "rds:DescribeDBSnapshots"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "ReadOnly"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "s3:ListBucket"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "ReadOnly"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "s3:GetObject"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "ReadOnly"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "logs:FilterLogEvents"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "ReadOnly"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "cloudwatch:DescribeAlarms"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "ReadOnly"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "cloudwatch:GetMetricData"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "ReadOnly"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "ce:GetCostAndUsage"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "ReadOnly"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "tickets:GetTicket"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "ReadOnly"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "Mutating"
+    },
+    "attrs": {},
+    "parents": []
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "ecs:UpdateService"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "Mutating"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "ec2:StartInstances"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "Mutating"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "ec2:StopInstances"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "Mutating"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "ec2:ModifyInstanceAttribute"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "Mutating"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "ec2:CreateTags"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "Mutating"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "rds:CreateDBSnapshot"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "Mutating"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "Destructive"
+    },
+    "attrs": {},
+    "parents": []
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "ec2:TerminateInstances"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "Destructive"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "ec2:DeleteVolume"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "Destructive"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "ec2:DeleteSnapshot"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "Destructive"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "rds:DeleteDBInstance"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "Destructive"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "rds:DeleteDBSnapshot"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "Destructive"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "rds:ModifyDBInstance"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "Destructive"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "s3:DeleteObject"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "Destructive"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "s3:DeleteBucket"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "Destructive"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "s3:PutBucketPolicy"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "Destructive"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "logs:DeleteLogGroup"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "Destructive"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "cloudtrail:StopLogging"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "Destructive"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "cloudtrail:DeleteTrail"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "Destructive"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "IamChange"
+    },
+    "attrs": {},
+    "parents": []
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "iam:CreateUser"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "IamChange"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "iam:CreateAccessKey"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "IamChange"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "iam:AttachRolePolicy"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "IamChange"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "iam:PutRolePolicy"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "IamChange"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "iam:DeleteRolePermissionsBoundary"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "IamChange"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "iam:UpdateAssumeRolePolicy"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "IamChange"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "ec2:AuthorizeSecurityGroupIngress"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "IamChange"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "ec2:RevokeSecurityGroupIngress"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "IamChange"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "bedrock:UpdateGuardrail"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "IamChange"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "verifiedpermissions:PutPolicy"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "IamChange"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "SecretsRead"
+    },
+    "attrs": {},
+    "parents": []
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "secretsmanager:GetSecretValue"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "SecretsRead"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "ssm:GetParameter"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "SecretsRead"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "kms:Decrypt"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "SecretsRead"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "Exfiltration"
+    },
+    "attrs": {},
+    "parents": []
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "ec2:ModifySnapshotAttribute"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "Exfiltration"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "rds:ModifyDBSnapshotAttribute"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "Exfiltration"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "s3:PutObjectAcl"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "Exfiltration"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Action",
+      "id": "ec2:CopySnapshot"
+    },
+    "attrs": {},
+    "parents": [
+      {
+        "type": "BreakMe::Action",
+        "id": "Exfiltration"
+      }
+    ]
+  },
+  {
+    "uid": {
+      "type": "BreakMe::Agent",
+      "id": "blue"
+    },
+    "attrs": {},
+    "parents": []
+  }
+]

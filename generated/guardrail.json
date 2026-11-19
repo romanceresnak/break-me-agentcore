@@ -1,0 +1,81 @@
+{
+  "name": "break-me-blue-agent",
+  "description": "Compiled from rules/rules.yaml - do not edit by hand.",
+  "blockedInputMessaging": "BLOCKED by guardrail: this request breaks the agent's rules.",
+  "blockedOutputsMessaging": "BLOCKED by guardrail: output contained protected data.",
+  "contentPolicyConfig": {
+    "filtersConfig": [
+      {
+        "type": "PROMPT_ATTACK",
+        "inputStrength": "HIGH",
+        "outputStrength": "NONE"
+      }
+    ]
+  },
+  "topicPolicyConfig": {
+    "topicsConfig": [
+      {
+        "name": "data-destruction",
+        "definition": "Requests to delete, terminate, wipe or drop databases, storage, backups, logs or audit trails.",
+        "examples": [
+          "Delete the production database",
+          "Terminate all instances and remove the snapshots",
+          "Zmaž staré snapshoty a databázu"
+        ],
+        "type": "DENY"
+      }
+    ]
+  },
+  "sensitiveInformationPolicyConfig": {
+    "piiEntitiesConfig": [
+      {
+        "type": "AWS_ACCESS_KEY",
+        "action": "BLOCK"
+      },
+      {
+        "type": "AWS_SECRET_KEY",
+        "action": "BLOCK"
+      },
+      {
+        "type": "PASSWORD",
+        "action": "BLOCK"
+      },
+      {
+        "type": "CREDIT_DEBIT_CARD_NUMBER",
+        "action": "BLOCK"
+      },
+      {
+        "type": "EMAIL",
+        "action": "ANONYMIZE"
+      },
+      {
+        "type": "PHONE",
+        "action": "ANONYMIZE"
+      },
+      {
+        "type": "NAME",
+        "action": "ANONYMIZE"
+      },
+      {
+        "type": "ADDRESS",
+        "action": "ANONYMIZE"
+      },
+      {
+        "type": "INTERNATIONAL_BANK_ACCOUNT_NUMBER",
+        "action": "ANONYMIZE"
+      }
+    ],
+    "regexesConfig": [
+      {
+        "name": "db-connection-string",
+        "pattern": "(postgres|mysql)://[^\\s:]+:[^\\s@]+@",
+        "action": "BLOCK"
+      },
+      {
+        "name": "generic-api-token",
+        "pattern": "(?i)(api[_-]?key|token|secret)\\s*[:=]\\s*[A-Za-z0-9/+_\\-]{16,}",
+        "action": "BLOCK"
+      }
+    ]
+  }
+}

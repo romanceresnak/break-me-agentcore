@@ -1,0 +1,63 @@
+[
+  {
+    "rule": "R1",
+    "action": "rds:DeleteDBInstance",
+    "resource": "rds:prod-orders",
+    "expect": "DENY"
+  },
+  {
+    "rule": "R2",
+    "action": "ecs:UpdateService",
+    "resource": "ecs:prod/shop-api",
+    "expect": "ESCALATE"
+  },
+  {
+    "rule": "R3",
+    "action": "ecs:UpdateService",
+    "resource": "ecs:dev/shop-api",
+    "context": {
+      "scale_factor": 4
+    },
+    "expect": "ESCALATE"
+  },
+  {
+    "rule": "R4",
+    "action": "ec2:ModifyInstanceAttribute",
+    "resource": "ec2:dev-batch-1",
+    "context": {
+      "est_monthly_cost_eur": 900
+    },
+    "expect": "ESCALATE"
+  },
+  {
+    "rule": "R5",
+    "action": "ec2:AuthorizeSecurityGroupIngress",
+    "resource": "sg:prod-db",
+    "expect": "DENY"
+  },
+  {
+    "rule": "R6",
+    "action": "secretsmanager:GetSecretValue",
+    "resource": "secret:prod/orders-db",
+    "expect": "DENY"
+  },
+  {
+    "rule": "R7",
+    "action": "ec2:StopInstances",
+    "resource": "ec2:dev-web-1",
+    "context": {
+      "untrusted_trigger": true
+    },
+    "expect": "ESCALATE"
+  },
+  {
+    "rule": "R8",
+    "action": "rds:CreateDBSnapshot",
+    "resource": "rds:prod-orders",
+    "context": {
+      "sequence_risk": true,
+      "approved": false
+    },
+    "expect": "ESCALATE"
+  }
+]

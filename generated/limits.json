@@ -1,0 +1,5 @@
+{
+  "max_scale_factor_without_approval": 2,
+  "max_monthly_cost_eur_without_approval": 50,
+  "approval_ttl_minutes": 15
+}
